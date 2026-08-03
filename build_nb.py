@@ -65,6 +65,7 @@ cells.append(code('''# CELL 1 | Install Dependencies (~3 min)
 import subprocess, sys
 
 pkgs = [
+    "huggingface-hub<0.22.0",
     "ultralytics==8.3.0",
     "gdown",
     "imageio[ffmpeg]",

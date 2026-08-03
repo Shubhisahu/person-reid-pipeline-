@@ -3,7 +3,7 @@
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)](https://github.com/ultralytics/ultralytics)
-[![Google Colab](https://img.shields.io/badge/Google_Colab-T4_GPU-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/)
+[![Google Colab](https://img.shields.io/badge/Google_Colab-T4_GPU-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1sGicLgRC6X_Fw7Yiyns-ySgiPb-kqaWz?usp=sharing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 An end-to-end multi-view Person Re-Identification (Re-ID) and tracking pipeline engineered for cross-camera surveillance systems. The pipeline combines a fine-tuned **YOLOv8n** person detector, an **OSNet-x0.75** deep feature extractor trained with Triplet Loss, an **OpenCV 2×3 camera grid** with cross-camera identity highlighting, an interactive **Gradio Dashboard**, and advanced **K-Reciprocal Re-Ranking** with failure analysis.
@@ -70,17 +70,20 @@ flowchart TD
 
 ## 📊 Performance & Benchmark Metrics
 
+> [!NOTE]
+> The performance metrics below represent the **actual empirical results** produced by executing `reid_pipeline.ipynb` on Google Colab (NVIDIA T4 GPU).
+
 ### Stage 1: Person Detector Performance (YOLOv8n)
 
 Fine-tuned for 15 epochs on a person-only COCO validation subset ($640 \times 640$ resolution, batch size 16):
 
 | Metric | Score |
 |---|---|
-| **mAP@0.50** | `0.8840` |
-| **mAP@0.50:0.95** | `0.6520` |
-| **Precision** | `0.8650` |
-| **Recall** | `0.8120` |
-| **F1-Score** | `0.8377` |
+| **mAP@0.50** | `0.6616` |
+| **mAP@0.50:0.95** | `0.4203` |
+| **Precision** | `0.7202` |
+| **Recall** | `0.5931` |
+| **F1-Score** | `0.6505` |
 
 ### Stage 2 & Stretch Goal: Re-ID Benchmark (Market-1501 Protocol)
 
@@ -88,9 +91,11 @@ Evaluated under standard Market-1501 single-query cross-camera protocol (3,368 q
 
 | Evaluation Method | mAP (%) | Rank-1 (%) | Rank-5 (%) | Rank-10 (%) |
 |---|:---:|:---:|:---:|:---:|
-| **OSNet-x0.75 (Baseline)** | **72.4%** | **88.1%** | **94.8%** | **96.7%** |
-| **K-Reciprocal Re-Ranked** | **84.6%** | **91.3%** | **96.1%** | **97.5%** |
-| **Delta Improvement** | `+12.2%` | `+3.2%` | `+1.3%` | `+0.8%` |
+| **OSNet-x0.75 Baseline (Full 3,368 Queries)** | **64.07%** | **83.70%** | **93.71%** | **96.26%** |
+| **K-Reciprocal Re-Ranked ($N_{RR}=500$ Subset\*)** | **66.05%** | **84.00%** | **95.80%** | **96.80%** |
+| **Delta Improvement** | `+1.98%` | `+0.30%` | `+2.09%` | `+0.54%` |
+
+*\*Note on Re-Ranking Evaluation: To preserve memory safety and avoid out-of-memory (OOM) crashes on Google Colab free-tier instances (<12 GB RAM), K-Reciprocal Re-Ranking is evaluated on a random, reproducible sub-sampled subset of $N_{RR} = 500$ query images, whereas the baseline is evaluated over the full 3,368 query set.*
 
 ---
 
@@ -115,9 +120,11 @@ Evaluated under standard Market-1501 single-query cross-camera protocol (3,368 q
 
 ## 💻 Quick Start & Usage
 
-### Option 1: Run in Google Colab (Recommended)
+### Option 1: Run directly in Google Colab (Recommended)
 
-1. Upload `reid_pipeline.ipynb` to your Google Drive or Google Colab.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1sGicLgRC6X_Fw7Yiyns-ySgiPb-kqaWz?usp=sharing)
+
+1. Open the [Live Google Colab Notebook](https://colab.research.google.com/drive/1sGicLgRC6X_Fw7Yiyns-ySgiPb-kqaWz?usp=sharing).
 2. Ensure GPU acceleration is enabled (**Runtime -> Change runtime type -> T4 GPU**).
 3. Run all cells sequentially (**Runtime -> Run all**).
 
@@ -143,11 +150,11 @@ python validate_nb.py
 Expected validation output:
 ```text
 nbformat          : 4
-Total cells       : 34
-Code cells        : 17
-Markdown cells    : 17
-Total code lines  : 739
-File size         : 48.5 KB
+Total cells       : 28
+Code cells        : 16
+Markdown cells    : 12
+Total code lines  : 929
+File size         : 42.3 KB
 
 All cells valid JSON structure.
   [PASS] FIX 1 - market1501 path

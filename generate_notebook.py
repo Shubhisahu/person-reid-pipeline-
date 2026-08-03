@@ -69,6 +69,7 @@ cells.append(code(r"""# ──────────────────�
 # ─────────────────────────────────────────────────────────────────────
 
 # Core
+!pip install -q "huggingface-hub<0.22.0"
 !pip install -q ultralytics==8.3.0
 !pip install -q gdown imageio[ffmpeg] imageio-ffmpeg
 !pip install -q gradio==4.44.0
