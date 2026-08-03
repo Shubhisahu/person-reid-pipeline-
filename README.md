@@ -20,6 +20,14 @@ Developed by **Shubhi Sahu**.
 
 ---
 
+## 📦 Trained Weights
+
+- **OSNet-x0.75 Checkpoints (20-Epoch Training Backup)**: [Download OSNet Checkpoints (Google Drive)](https://drive.google.com/drive/folders/1_tOHJCgWqm4ZXke7mHzbZd4udzrV8hRL?usp=sharing)
+  - Contains epoch-by-epoch model checkpoints (`model.pth.tar-*`) auto-saved directly during training.
+  - Download and place in `log/osnet_x0_75/model/` to skip Cell 9 (Re-ID training) and proceed directly to feature extraction & evaluation.
+
+---
+
 ## 🏗️ System Architecture
 
 ```mermaid
