@@ -172,7 +172,6 @@ All cells valid JSON structure.
 ```text
 person-reid-pipeline-/
 ├── build_nb.py           # Programmatic builder script for reid_pipeline.ipynb
-├── generate_notebook.py  # Alternative generator script with detailed cell structure
 ├── validate_nb.py        # Automated integrity & check test runner
 ├── reid_pipeline.ipynb   # Complete 16-stage Jupyter Notebook (Colab Ready)
 ├── requirements.txt      # Pinned dependency requirements
