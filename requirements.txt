@@ -1,0 +1,24 @@
+# Deep Learning & Computer Vision Core
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics==8.3.0
+
+# Person Re-Identification Framework (torchreid)
+git+https://github.com/KaiyangZhou/deep-person-reid.git
+
+# Data Processing & Utilities
+gdown>=5.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+pycocotools>=2.0.7
+pyyaml>=6.0
+
+# Visualization & Interactive Dashboard
+opencv-python>=4.8.0
+imageio[ffmpeg]>=2.31.0
+imageio-ffmpeg>=0.4.8
+gradio==4.44.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0

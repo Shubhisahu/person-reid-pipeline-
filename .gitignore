@@ -1,0 +1,45 @@
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Jupyter & Notebook Artifacts
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Datasets & Downloads
+data/
+Market-1501-v15.09.15/
+Market-1501-v15.09.15.zip
+coco_person/
+val2017/
+val2017.zip
+
+# Model Checkpoints & Training Runs
+runs/
+yolo_person/
+log/
+*.pt
+*.pth
+*.pth.tar
+
+# Output Media & Visualizations
+*.gif
+*.mp4
+*.png
+*.jpg
+*.jpeg
+!assets/*.png
+!assets/*.jpg
+
+# System Files & IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

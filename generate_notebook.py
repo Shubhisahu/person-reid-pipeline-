@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generator script for the Big Vision Multi-View Person ReID Assignment Notebook.
+Generator script for the Multi-View Person ReID Notebook.
 Run this script to produce reid_pipeline.ipynb in the current directory.
 """
 import json, uuid, random
@@ -25,7 +25,6 @@ cells = []
 # TITLE & OVERVIEW
 # ══════════════════════════════════════════════════════════════════════
 cells.append(md(r"""# 🎯 Multi-View Person Re-Identification — End-to-End Pipeline
-## Big Vision Internship Assignment
 
 **Author:** Shubhi Sahu | **Date:** August 2026
 **Environment:** Google Colab free tier · NVIDIA T4 GPU · Python 3.10
@@ -203,18 +202,18 @@ Person ReID has serious dual-use risks that every practitioner must acknowledge:
 - *Demographic bias* — models trained on non-diverse datasets may perform worse on under-represented groups, creating discriminatory outcomes.
 - *Mission creep* — systems built for "retail analytics" can be repurposed for political surveillance.
 
-**Mitigation in this assignment:**
+**Mitigation in this project:**
 - Market-1501 was collected in a public university campus for academic research; no names, faces, or biometric identifiers beyond body appearance are stored.
 - This work is a research prototype, not a deployed system.
 - These risks are documented explicitly.
 
-**Responsible deployment requirements** (beyond this assignment): explicit legal basis (GDPR Art. 6), transparency to data subjects, a Data Protection Impact Assessment, and strong access controls on the resulting embedding database.
+**Responsible deployment requirements** (beyond this project): explicit legal basis (GDPR Art. 6), transparency to data subjects, a Data Protection Impact Assessment, and strong access controls on the resulting embedding database.
 
 ---
 
 ### 0.4  Demo Data for Stage 3
 
-Market-1501 provides pre-cropped identity images (not raw video). For the Stage 3 multi-camera demo I use the **gallery images directly, grouped by their camera IDs (c1–c6)**. Each camera's group acts as that camera's "frame set". This is the explicitly-allowed fallback from the assignment brief and is labelled clearly at every step."""))
+Market-1501 provides pre-cropped identity images (not raw video). For the Stage 3 multi-camera demo I use the **gallery images directly, grouped by their camera IDs (c1–c6)**. Each camera's group acts as that camera's "frame set". This is the structured fallback methodology and is labelled clearly at every step."""))
 
 cells.append(code(r"""# ─────────────────────────────────────────────────────────────────────
 # CELL 3 | Download Market-1501
@@ -333,7 +332,7 @@ The COCO-pretrained model already detects persons well (class 0), but fine-tunin
 
 1. Removes false positives on non-person objects that share visual similarity (e.g., mannequins, statues).
 2. Sharpens the decision boundary in crowded scenes.
-3. Allows us to demonstrate a real training pipeline (required by the assignment).
+3. Allows us to demonstrate a real training pipeline (required for a complete pipeline).
 
 **What I fine-tune on:**
 COCO 2017 val split (5,000 images, ~1 GB) filtered to the **person** class only, converted to YOLO label format, and split 80/20 for train/val. Using the full COCO train set (~18 GB) exceeds free-tier storage; the val set is sufficient to demonstrate the methodology.
@@ -815,7 +814,7 @@ cells.append(md(r"""---
 
 ### Approach
 
-**Data source (explicit):** Market-1501 gallery images, grouped by camera ID (c1–c6). Each camera's group serves as that camera's "crop set" for the demo. This is the explicitly-allowed fallback from the assignment brief.
+**Data source (explicit):** Market-1501 gallery images, grouped by camera ID (c1–c6). Each camera's group serves as that camera's "crop set" for the demo. This is the structured fallback methodology.
 
 **Global ID assignment algorithm:**
 1. Maintain a prototype embedding for each known global ID (updated via EMA).
@@ -1121,7 +1120,7 @@ reid_html = (
 with gr.Blocks(theme=gr.themes.Soft(primary_hue='blue'),
                title='Multi-View Person ReID Dashboard') as demo_app:
 
-    gr.Markdown("# 🎯 Multi-View Person ReID Dashboard\n**Big Vision Assignment** | Market-1501 | OSNet-x0.75")
+    gr.Markdown("# 🎯 Multi-View Person ReID Dashboard\n**Person ReID Pipeline** | Market-1501 | OSNet-x0.75")
 
     with gr.Tabs():
 
@@ -1457,7 +1456,7 @@ cells.append(md(r"""---
 6. Zhou, K. (2021). *torchreid: A Library for Deep Learning Person Re-ID in PyTorch.* GitHub.
 
 ---
-*Notebook produced as the Big Vision internship assignment. All code is original; referenced algorithms are cited above. Reasoning is documented throughout in markdown cells.*"""))
+*Notebook produced for Multi-View Person Re-Identification Pipeline. All code is original; referenced algorithms are cited above. Reasoning is documented throughout in markdown cells.*"""))
 
 # ══════════════════════════════════════════════════════════════════════
 # WRITE NOTEBOOK

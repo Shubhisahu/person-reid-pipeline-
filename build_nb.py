@@ -42,7 +42,6 @@ cells = []
 
 # ── TITLE ─────────────────────────────────────────────────────────────────────
 cells.append(md('''# Multi-View Person Re-Identification Pipeline
-## Big Vision Internship Assignment
 
 **Author:** Shubhi Sahu | **Date:** August 2026
 **Environment:** Google Colab free tier · NVIDIA T4 GPU · Python 3.12
@@ -238,7 +237,7 @@ test_pids    = query_pids | gallery_pids
 overlap      = train_pids & test_pids
 
 # FIX 3: Assert no identity leakage between train and test
-assert len(overlap) == 0, f"Identity leakage! Overlapping IDs: {overlap}"
+assert len(overlap) == 0, f"Identity leakage detected! Overlapping IDs: {overlap}"
 print(f"Train   : {len(train_data):5d} images | {len(train_pids):3d} identities")
 print(f"Query   : {len(query_data):5d} images | {len(query_pids):3d} identities")
 print(f"Gallery : {len(gallery_data):5d} images | {len(gallery_pids):3d} identities")
